@@ -78,3 +78,24 @@ export const getAppointments = async () => {
 
   return res.json();
 };
+
+// ---------------- GET MY PATIENTS ----------------
+export const getMyPatients = async () => {
+  const token = localStorage.getItem("token");
+
+  const res = await fetch(`${API_URL}/appointments/my-patients`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+  if (!res.ok) {
+    const text = await res.text();
+    console.error("Error trayendo pacientes:", text);
+    throw new Error("Error trayendo pacientes");
+  }
+
+  return res.json();
+};

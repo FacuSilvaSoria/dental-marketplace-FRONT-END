@@ -44,17 +44,23 @@ function Sidebar({ onLogout, onCreateAppointment }) {
           )}
 
           {/* dentista */}
-          {user?.role === "dentist" && (
-            <>
-              <button className="nav-btn">
-                📅 Mi agenda
-              </button>
+{user?.role === "dentist" && (
+  <>
+    <button
+      className="nav-btn"
+      onClick={() => navigate("/my-agenda")}
+    >
+      📅 Mi agenda
+    </button>
 
-              <button className="nav-btn">
-                👥 Pacientes
-              </button>
-            </>
-          )}
+    <button
+      className="nav-btn"
+      onClick={() => navigate("/patients")}
+    >
+      👥 Pacientes
+    </button>
+  </>
+)}
 
           {/* admin */}
           {user?.role === "admin" && (
